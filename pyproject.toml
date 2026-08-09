@@ -1,0 +1,27 @@
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.13"
+typeCheckingMode = "basic"
+
+[tool.basedpyright]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.13"
+typeCheckingMode = "basic"
+
+[tool.pylint.main]
+init-hook = """
+from pathlib import Path
+import sys
+root = Path(__file__).resolve().parent if '__file__' in dir() else Path.cwd()
+for site in (root / '.venv').glob('lib/python*/site-packages'):
+    sys.path.insert(0, str(site))
+"""
+
+[tool.pylint."messages control"]
+disable = [
+  "missing-module-docstring",
+  "missing-function-docstring",
+  "missing-class-docstring",
+]

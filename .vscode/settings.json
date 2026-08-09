@@ -1,0 +1,5 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.analysis.extraPaths": ["${workspaceFolder}"],
+  "pylint.args": ["--init-hook=import sys; from pathlib import Path; [sys.path.insert(0, str(p)) for p in Path('${workspaceFolder}/.venv').glob('lib/python*/site-packages')]"]
+}
